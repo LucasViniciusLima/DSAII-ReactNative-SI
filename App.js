@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Center, NativeBaseProvider } from 'native-base';
+import Campos from './src/components/campos';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function App() {
+  const config = {
+    dependencies: {
+      "linear-gradient": LinearGradient
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider config={config}>
+      <Center flex={1}>
+        <Campos />
+      </Center>
+    </NativeBaseProvider>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

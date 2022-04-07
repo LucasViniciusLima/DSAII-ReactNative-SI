@@ -7,15 +7,13 @@ import { RegisterModal } from '../register-modal';
 export const StaggerButton = (props) => {
     const { isOpen, onToggle } = useDisclose();
     const [showMdl, setShowMdl] = useState(false);
-    const [obj, setObj] = useState({title: '', bodyText: '', urlImage: '' })
 
     const renderModal = () => {
         setShowMdl(!showMdl);
     }
 
     const save = (myObj) => {
-        setObj(myObj);
-        props.onSaveObj?.({ id: 1, title: myObj.title, bodyText: myObj.bodyText, urlImage: myObj.urlImage, date: new Date().toISOString().slice(0,10).replace(/-/g,".") });
+        props.onSaveObj?.({ id: 1, title: myObj.title, bodyText: myObj.bodyText, urlImage: myObj.urlImage, date: new Date().toISOString().slice(0, 10).replace(/-/g, ".") });
     }
 
     return <Flex direction="row-reverse" p={4}>

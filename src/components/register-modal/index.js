@@ -5,6 +5,10 @@ import { Button, Center, FormControl, Input, Modal } from "native-base";
 export const RegisterModal = (props) => {
     const [showModal, setShowModal] = useState(true);
 
+    const [title, setTitle] = useState('');
+    const [bodyText, setBodyText] = useState('');
+    const [urlImage, setUrlImage] = useState('');
+
     return <Center>
         <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
             <Modal.Content maxWidth="400px">
@@ -13,15 +17,15 @@ export const RegisterModal = (props) => {
                 <Modal.Body>
                     <FormControl>
                         <FormControl.Label>Titulo</FormControl.Label>
-                        <Input />
+                        <Input  value={title} onChangeText={(text) => { setTitle(text) }} />
                     </FormControl>
                     <FormControl mt="3">
                         <FormControl.Label>Texto</FormControl.Label>
-                        <Input />
+                        <Input  value={bodyText} onChangeText={(text) => { setBodyText(text) }} />
                     </FormControl>
                     <FormControl mt="3">
                         <FormControl.Label>Url da Imagem</FormControl.Label>
-                        <Input />
+                        <Input value={urlImage} onChangeText={(text) => { setUrlImage(text) }} />
                     </FormControl>
                 </Modal.Body>
                 <Modal.Footer>
@@ -32,6 +36,7 @@ export const RegisterModal = (props) => {
                             Cancelar
                         </Button>
                         <Button onPress={() => {
+                            props.onSave?.({ title, bodyText, urlImage })
                             setShowModal(false);
                         }}>
                             Salvar
